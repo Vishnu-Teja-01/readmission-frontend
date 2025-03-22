@@ -238,7 +238,7 @@ function downloadReport() {
     const blob = new Blob([`<html><body><h1>Risk Assessment Report</h1>${result}</body></html>`], { type: 'text/html' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'Risk_Assessment_Report.html'; // Changed to .html for better compatibility
+    link.download = 'Risk_Assessment_Report.html';
     link.click();
 }
 
