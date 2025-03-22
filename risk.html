@@ -38,7 +38,7 @@
             <button class="retrieve-btn" onclick="retrievePatientData()">Retrieve</button>
         </div>
 
-        <!-- Expanded Risk Input Form -->
+        <!-- Risk Input Form -->
         <form id="riskForm" class="risk-form">
             <div class="risk-form-group">
                 <label>Patient Name: <input type="text" id="name" required placeholder="e.g., John Doe"></label>
@@ -47,25 +47,12 @@
                 <label>Chronic Disease Count: <input type="number" id="chronicDiseaseCount" min="0" placeholder="e.g., 2"></label>
                 <label>Length of Stay (days): <input type="number" id="lengthOfStay" min="0" placeholder="e.g., 5"></label>
                 <label>Emergency Visits: <input type="number" id="emergencyVisit" min="0" placeholder="e.g., 1"></label>
-                <label>Inpatient Visits: <input type="number" id="inpatientVisit" min="0" placeholder="e.g., 2"></label>
-                <label>Outpatient Visits: <input type="number" id="outpatientVisit" min="0" placeholder="e.g., 3"></label>
-                <label>BMI: <input type="number" id="bmi" min="0" step="0.1" placeholder="e.g., 27.5"></label>
-                <label>Heart Rate (bpm): <input type="number" id="heartRate" min="0" placeholder="e.g., 75"></label>
-                <label>Respiratory Rate (breaths/min): <input type="number" id="respiratoryRate" min="0" placeholder="e.g., 16"></label>
-                <label>Temperature (°F): <input type="number" id="temperature" min="0" step="0.1" placeholder="e.g., 98.6"></label>
-                <label>Hemoglobin (g/dL): <input type="number" id="hemoglobin" min="0" step="0.1" placeholder="e.g., 13.5"></label>
-                <label>Serum Sodium (mEq/L): <input type="number" id="serumSodium" min="0" step="0.1" placeholder="e.g., 140"></label>
-                <label>Serum Creatinine (mg/dL): <input type="number" id="serumCreatinine" min="0" step="0.1" placeholder="e.g., 1.0"></label>
             </div>
             <div class="risk-form-group">
-                <label>BNP (pg/mL): <input type="number" id="bnp" min="0" step="0.1" placeholder="e.g., 100"></label>
-                <label>NT-proBNP (pg/mL): <input type="number" id="ntProbnp" min="0" step="0.1" placeholder="e.g., 300"></label>
-                <label>Cardiac Troponin (ng/mL): <input type="number" id="cardiacTroponin" min="0" step="0.1" placeholder="e.g., 0.01"></label>
-                <label>ACE Inhibitors (count): <input type="number" id="aceInhibitors" min="0" placeholder="e.g., 1"></label>
-                <label>ARBs (count): <input type="number" id="arbs" min="0" placeholder="e.g., 0"></label>
-                <label>Beta Blockers (count): <input type="number" id="betaBlockers" min="0" placeholder="e.g., 1"></label>
-                <label>Diuretics (count): <input type="number" id="diuretics" min="0" placeholder="e.g., 1"></label>
-                <label>Total Medicines: <input type="number" id="totalMedicine" min="0" placeholder="e.g., 3"></label>
+                <label>Inpatient Visits: <input type="number" id="inpatientVisit" min="0" placeholder="e.g., 2"></label>
+                <label>Outpatient Visits: <input type="number" id="outpatientVisit" min="0" placeholder="e.g., 3"></label>
+                <label>Hemoglobin (g/dL): <input type="number" id="hemoglobin" min="0" step="0.1" placeholder="e.g., 13.5"></label>
+                <label>Cardiac Troponin (ng/mL): <input type="number" id="cardiacTroponin" min="0" step="0.01" placeholder="e.g., 0.01"></label>
                 <label>Blood Pressure (mmHg): <input type="text" id="bloodPressure" required placeholder="e.g., 120/80"></label>
                 <label>Discharge Disposition: 
                     <select id="dischargeDisposition">
@@ -74,6 +61,8 @@
                         <option value="SNF">SNF</option>
                     </select>
                 </label>
+            </div>
+            <div class="risk-form-group">
                 <label>Gender: 
                     <select id="gender">
                         <option value="Male">Male</option>
@@ -113,6 +102,8 @@
                         <option value="Unknown">No/Unknown</option>
                     </select>
                 </label>
+            </div>
+            <div class="risk-form-group">
                 <label>Depression: 
                     <select id="depression">
                         <option value="Depression">Yes</option>
@@ -144,7 +135,7 @@
             <div class="risk-metrics">
                 <p>Model Accuracy: 85% | Recall (High Risk): 90%</p>
             </div>
-            <button class="risk-download-btn" onclick="downloadReport()">Download Report (PDF)</button>
+            <button class="risk-download-btn" onclick="downloadReport()">Download Report</button>
         </div>
 
         <!-- History Section -->
@@ -157,7 +148,7 @@
 
     <footer class="footer">
         <div class="footer-section">
-            <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e5d5b5e5e415c5a6e5c4b4f4a43475d5d4741405e5c4b4a474d5a415c004d4143">[email&#160;protected]</a> | <i class="fas fa-phone"></i> 123-456-7890</p>
+            <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e5d5b5e5e415c5a6e5c4b4f4a43475d5d4741405e5c4b4a474d5a415c004d4143">[email protected]</a> | <i class="fas fa-phone"></i> 123-456-7890</p>
         </div>
         <div class="footer-section">
             <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Sitemap</a>
