@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Predictor - Patient Readmission Risk Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="risk-body">
+    <header class="header">
+        <div class="logo"><i class="fas fa-heartbeat"></i> Patient Readmission Risk Predictor</div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="risk.html">Risk Predictor</a></li>
+                <li><a href="patient.html">Patient Data</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="caregivers.html">Caregivers</a></li>
+                <li><a href="providers.html">Providers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </nav>
+    </header>
+
+    <section class="risk-page-content">
+        <h1>Patient Readmission Risk Predictor</h1>
+        <p class="risk-subtitle">Enter or retrieve patient data for a real-time risk assessment.</p>
+
+        <!-- Patient Retrieval -->
+        <div class="patient-retrieval">
+            <label>Retrieve Patient Data: 
+                <select id="patientSelect">
+                    <option value="">Select Patient</option>
+                </select>
+            </label>
+            <button class="retrieve-btn" onclick="retrievePatientData()">Retrieve</button>
+        </div>
+
+        <!-- Expanded Risk Input Form -->
+        <form id="riskForm" class="risk-form">
+            <div class="risk-form-group">
+                <label>Patient Name: <input type="text" id="name" required placeholder="e.g., John Doe"></label>
+                <label>Age: <input type="number" id="age" min="0" required placeholder="e.g., 65"></label>
+                <label>Joining Date: <input type="date" id="joiningDate" required max="2025-03-21"></label>
+                <label>Chronic Disease Count: <input type="number" id="chronicDiseaseCount" min="0" placeholder="e.g., 2"></label>
+                <label>Length of Stay (days): <input type="number" id="lengthOfStay" min="0" placeholder="e.g., 5"></label>
+                <label>Emergency Visits: <input type="number" id="emergencyVisit" min="0" placeholder="e.g., 1"></label>
+                <label>Inpatient Visits: <input type="number" id="inpatientVisit" min="0" placeholder="e.g., 2"></label>
+                <label>Outpatient Visits: <input type="number" id="outpatientVisit" min="0" placeholder="e.g., 3"></label>
+                <label>BMI: <input type="number" id="bmi" min="0" step="0.1" placeholder="e.g., 27.5"></label>
+                <label>Heart Rate (bpm): <input type="number" id="heartRate" min="0" placeholder="e.g., 75"></label>
+                <label>Respiratory Rate (breaths/min): <input type="number" id="respiratoryRate" min="0" placeholder="e.g., 16"></label>
+                <label>Temperature (°F): <input type="number" id="temperature" min="0" step="0.1" placeholder="e.g., 98.6"></label>
+                <label>Hemoglobin (g/dL): <input type="number" id="hemoglobin" min="0" step="0.1" placeholder="e.g., 13.5"></label>
+                <label>Serum Sodium (mEq/L): <input type="number" id="serumSodium" min="0" step="0.1" placeholder="e.g., 140"></label>
+                <label>Serum Creatinine (mg/dL): <input type="number" id="serumCreatinine" min="0" step="0.1" placeholder="e.g., 1.0"></label>
+            </div>
+            <div class="risk-form-group">
+                <label>BNP (pg/mL): <input type="number" id="bnp" min="0" step="0.1" placeholder="e.g., 100"></label>
+                <label>NT-proBNP (pg/mL): <input type="number" id="ntProbnp" min="0" step="0.1" placeholder="e.g., 300"></label>
+                <label>Cardiac Troponin (ng/mL): <input type="number" id="cardiacTroponin" min="0" step="0.1" placeholder="e.g., 0.01"></label>
+                <label>ACE Inhibitors (count): <input type="number" id="aceInhibitors" min="0" placeholder="e.g., 1"></label>
+                <label>ARBs (count): <input type="number" id="arbs" min="0" placeholder="e.g., 0"></label>
+                <label>Beta Blockers (count): <input type="number" id="betaBlockers" min="0" placeholder="e.g., 1"></label>
+                <label>Diuretics (count): <input type="number" id="diuretics" min="0" placeholder="e.g., 1"></label>
+                <label>Total Medicines: <input type="number" id="totalMedicine" min="0" placeholder="e.g., 3"></label>
+                <label>Blood Pressure (mmHg): <input type="text" id="bloodPressure" required placeholder="e.g., 120/80"></label>
+                <label>Discharge Disposition: 
+                    <select id="dischargeDisposition">
+                        <option value="Home">Home</option>
+                        <option value="Hospice - Home">Hospice - Home</option>
+                        <option value="SNF">SNF</option>
+                    </select>
+                </label>
+                <label>Gender: 
+                    <select id="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </label>
+                <label>Race: 
+                    <select id="race">
+                        <option value="White">White</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+                </label>
+                <label>Condition: 
+                    <select id="condition" required>
+                        <option value="">Select</option>
+                        <option value="heart">Heart Disease</option>
+                        <option value="lung">Lung Condition</option>
+                        <option value="diabetes">Diabetes</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+                <label>Diabetes Mellitus: 
+                    <select id="diabetesMellitus">
+                        <option value="DM">Yes</option>
+                        <option value="Unknown">No/Unknown</option>
+                    </select>
+                </label>
+                <label>Chronic Kidney Disease: 
+                    <select id="chronicKidneyDisease">
+                        <option value="CKD">Yes</option>
+                        <option value="Unknown">No/Unknown</option>
+                    </select>
+                </label>
+                <label>Anemia: 
+                    <select id="anemia">
+                        <option value="Anemia">Yes</option>
+                        <option value="Unknown">No/Unknown</option>
+                    </select>
+                </label>
+                <label>Depression: 
+                    <select id="depression">
+                        <option value="Depression">Yes</option>
+                        <option value="Unknown">No/Unknown</option>
+                    </select>
+                </label>
+                <label>COPD: 
+                    <select id="copd">
+                        <option value="COPD">Yes</option>
+                        <option value="Unknown">No/Unknown</option>
+                    </select>
+                </label>
+            </div>
+            <button type="submit" class="risk-cta-btn">Predict Risk</button>
+        </form>
+
+        <!-- Risk Result Display -->
+        <div id="riskResult" class="risk-result">
+            <h3>Risk Assessment</h3>
+            <div class="risk-gauge">
+                <div id="gaugeNeedle" class="gauge-needle"></div>
+                <div class="gauge-labels">
+                    <span>Low</span><span>Moderate</span><span>High</span>
+                </div>
+            </div>
+            <p id="riskScore" class="risk-score"></p>
+            <div id="featureImportance" class="risk-feature-importance"></div>
+            <p id="recommendation" class="risk-recommendation"></p>
+            <div class="risk-metrics">
+                <p>Model Accuracy: 85% | Recall (High Risk): 90%</p>
+            </div>
+            <button class="risk-download-btn" onclick="downloadReport()">Download Report (PDF)</button>
+        </div>
+
+        <!-- History Section -->
+        <div class="risk-history">
+            <h3>Prediction History</h3>
+            <ul id="historyList" class="risk-history-list"></ul>
+            <button class="risk-clear-btn" onclick="clearHistory()">Clear History</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-section">
+            <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e5d5b5e5e415c5a6e5c4b4f4a43475d5d4741405e5c4b4a474d5a415c004d4143">[email&#160;protected]</a> | <i class="fas fa-phone"></i> 123-456-7890</p>
+        </div>
+        <div class="footer-section">
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Sitemap</a>
+        </div>
+        <div class="footer-section social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
